@@ -1,5 +1,8 @@
 GenAI Knowledge Assistant
 
+<img width="1358" height="609" alt="Screenshot 2025-09-17 at 7 47 46 PM" src="https://github.com/user-attachments/assets/fcde5486-dd7e-44bc-99d5-a322bf0d85ff" />
+<img width="1436" height="628" alt="Screenshot 2025-09-17 at 7 47 06 PM" src="https://github.com/user-attachments/assets/017057c1-f4b3-494b-a121-e1ec38404ebd" />
+
 A production-style, multimodal RAG system: streaming ingestion (Kafka), embedding + retrieval, grounded chat with citations, image captioning, and a clean API + React frontend. Built to be swapped across model providers and vector stores, and deployable on Docker/Kubernetes.
 
 ✨ What it does
