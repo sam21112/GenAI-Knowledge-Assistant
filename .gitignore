@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+backend/.env
+backend/.env.* 
+backend/data/
+backend/uploads/
+backend/data/index/
+backend/.pytest_cache/
+*.sqlite3
+
+# Node / React
+frontend/node_modules/
+frontend/.env
+frontend/.env.*
+frontend/build/
+frontend/.parcel-cache/
+npm-debug.log*
+yarn-error.log*
+
+# Mac / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Caches
+*.cache/
+.huggingface/
+.cache/

@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+openai
+transformers
+torch
+pillow
+langchain
+faiss-cpu
+python-multipart
+pymupdf  # PDF reader
+sentence-transformers
+python-docx
+redis
