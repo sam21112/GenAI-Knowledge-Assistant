@@ -21,8 +21,11 @@ Front-end: React app to test chat, uploads, and status.
 🏗 Architecture (high level)
 flowchart LR
     FE[React Frontend] -->|/text-query /upload-doc /upload-image| API[FastAPI Backend]
+    
     API -->|enqueue| K[Kafka (optional)]
+    
     API -->|direct index (simple mode)| IDX[(On-disk Index)]
+    
     K --> W[Worker(s)]
     W -->|parse/embed| IDX
     API -->|retrieve top-k| IDX
@@ -207,36 +210,8 @@ Workers: separate Deployment(s) consuming Kafka
 Secrets: mount OPENAI_API_KEY via Secret + envFrom
 
 Observability: OpenTelemetry Collector sidecar or DaemonSet
+x
 
-apiVersion: apps/v1
-kind: Deployment
-metadata: { name: genai-api }
-spec:
-  replicas: 2
-  selector: { matchLabels: { app: genai-api } }
-  template:
-    metadata: { labels: { app: genai-api } }
-    spec:
-      containers:
-      - name: api
-        image: ghcr.io/you/genai-backend:main
-        ports: [{ containerPort: 8000 }]
-        env:
-        - name: OPENAI_API_KEY
-          valueFrom: { secretKeyRef: { name: openai, key: key } }
-        volumeMounts:
-        - name: index
-          mountPath: /app/data
-      volumes:
-      - name: index
-        persistentVolumeClaim: { claimName: genai-index-pvc }
----
-apiVersion: v1
-kind: Service
-metadata: { name: genai-api }
-spec:
-  selector: { app: genai-api }
-  ports: [{ port: 80, targetPort: 8000 }]
 
 🔒 Security & privacy
 
