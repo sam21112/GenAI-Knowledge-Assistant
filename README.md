@@ -42,30 +42,7 @@ Workers: kafka_worker.py (docs) and optional image_worker.py
 Vision: default = OpenAI Vision (no heavy local deps), optional = HF vit-gpt2-image-captioning
 
 Frontend: React client to exercise all endpoints
-
-📂 Repository layout
-GenAI Knowledge Assistant/
-├── backend/
-│   ├── api/
-│   │   ├── main.py             # loads .env, mounts routes, CORS
-│   │   └── routes/
-│   │       ├── text.py         # POST /text-query, GET /search
-│   │       ├── document.py     # POST /upload-doc (Kafka producer)
-│   │       ├── image.py        # POST /upload-image (Vision)
-│   │       └── llm.py          # lazy OpenAI client + query_llm()
-│   ├── services/
-│   │   ├── rag.py              # builds context + calls LLM
-│   │   └── vector_search.py    # chunk/embeddings/index (disk)
-│   ├── utils/
-│   │   └── file_loader.py      # PDF parsing, chunking
-│   ├── kafka_worker.py         # consumes doc-upload -> index
-│   ├── image_worker.py         # (optional) consumes image-upload -> caption + index
-│   ├── requirements.txt
-│   ├── data/                   # generated: embeddings/texts
-│   └── uploads/                # uploaded files
-└── frontend/
-    ├── package.json
-    └── src/App.js
+ 
 
 ⚙️ Tech choices (with Core-style rigor)
 
